@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.easysales.easylanguage"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+ext {
+    butterknifeLibVersion = '8.8.1'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:support-v4:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:design:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:support-vector-drawable:${rootProject.ext.supportLibVersion}"
+    compile 'com.android.support.constraint:constraint-layout:1.1.2'
+    compile "com.squareup.retrofit2:retrofit:${rootProject.retrofitLibVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${rootProject.retrofitLibVersion}"
+    compile "com.jakewharton:butterknife:$butterknifeLibVersion"
+    compile "com.google.dagger:dagger:${rootProject.daggerLibVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeLibVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.daggerLibVersion}"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:${rootProject.daggerLibVersion}"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:${rootProject.daggerLibVersion}"
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:2.7.17"
+    testCompile "org.robolectric:robolectric:3.8"
+    androidTestCompile 'org.mockito:mockito-android:2.7.17'
+    testCompile "com.google.dagger:dagger:${rootProject.daggerLibVersion}"
+    androidTestCompile 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:${rootProject.espressoVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.espressoVersion}"
+}
